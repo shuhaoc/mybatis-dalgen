@@ -59,7 +59,7 @@ public class MySQLTableRepository {
                 pre = pre + "_";
             }
 
-            if (StringUtils.startsWith(logicName, StringUtils.upperCase(pre))) {
+            if (StringUtils.startsWith(logicName, pre)) {
                 table.setJavaName(CamelCaseUtils.toCapitalizeCamelCase(StringUtils.substring(
                         logicName, pre.length())));
                 break;/* 取第一个匹配的 */
@@ -170,7 +170,7 @@ public class MySQLTableRepository {
      * @throws SQLException the sql exception
      */
     private String Str(ResultSet resultSet, String column) throws SQLException {
-        return StringUtils.upperCase(resultSet.getString(column));
+        return resultSet.getString(column);
     }
 
     /**

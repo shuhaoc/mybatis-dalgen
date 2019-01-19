@@ -82,7 +82,7 @@ public abstract class AbstractDalgenLoader implements DataLoader {
      * @return the string
      */
     protected String file2TableName(File tableFile) {
-        return StringUtils.upperCase(StringUtils.substring(tableFile.getName(), 0, tableFile
-                .getName().indexOf(".")));
+        return StringUtils.substring(tableFile.getName(), 0, tableFile
+                .getName().indexOf("."));
     }
 }

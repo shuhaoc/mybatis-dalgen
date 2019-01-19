@@ -83,7 +83,7 @@ public class DalgenLoader extends AbstractDalgenLoader {
         Map<String, Table> tableMap = Maps.newHashMap();
 
         for (String tbName : needGenTableNames) {
-            tableMap.put(StringUtils.upperCase(tbName),
+            tableMap.put(tbName,
                     tableRepository.gainTable(connection, tbName, cfTableMap.get(tbName)));
         }
 
@@ -147,7 +147,7 @@ public class DalgenLoader extends AbstractDalgenLoader {
         } else {
 
             for (String tableName : Lists
-                    .newArrayList(StringUtils.split(StringUtils.upperCase(cmd)))) {
+                    .newArrayList(StringUtils.split(cmd))) {
                 boolean flag = true;
                 for (String splitTableSuffix : ConfigUtil.getConfig().getSplitTableSuffixs()) {
                     if (StringUtils.endsWithIgnoreCase(tableName, splitTableSuffix)) {

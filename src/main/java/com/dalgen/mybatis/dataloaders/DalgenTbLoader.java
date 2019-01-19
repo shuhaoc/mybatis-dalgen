@@ -42,7 +42,7 @@ public class DalgenTbLoader extends AbstractDalgenLoader {
         if (StringUtils.equals(StringUtils.trim(cmd), "*")) {
             return;
         }
-        List<String> cmdTables = Lists.newArrayList(StringUtils.split(StringUtils.upperCase(cmd)));
+        List<String> cmdTables = Lists.newArrayList(StringUtils.split(cmd));
 
         List<String> needInitTables = Lists.newArrayList();
 

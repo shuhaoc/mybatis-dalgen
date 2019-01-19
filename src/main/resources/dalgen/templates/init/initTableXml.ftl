@@ -9,15 +9,14 @@
     <operation name="insert" paramtype="object" remark="insert:${table.sqlName}">
         <#if dalgen.dbType=="MySQL">
         <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
-            SELECT
-            LAST_INSERT_ID()
+            select last_insert_id()
         </selectKey>
         </#if>
-        INSERT INTO ${table.sqlName}(
+        insert into ${table.sqlName} (
         <#list table.columnList as column>
             <#if column_index gt 0>,</#if>${column.sqlName}
         </#list>
-        )VALUES(
+        ) values (
         <#list table.columnList as column>
             <#if column_index gt 0>,</#if> ${lib.insertVal(column)}
         </#list>
@@ -26,35 +25,35 @@
 
 <#if table.primaryKeys??>
     <operation name="update" paramtype="object" remark="update table:${table.sqlName}">
-        UPDATE ${table.sqlName}
-        SET
+        update ${table.sqlName}
+        set
         <#assign c_idx = 0>
         <#list table.columnList as column>
             <#if lib.updateIncludeColumn(column,table.primaryKeys.columnList)><#assign c_idx = c_idx+1>
             <#if c_idx gt 1>,</#if>${column.sqlName}${lib.space(column.sqlName)} = ${lib.updateVal(column)}
             </#if>
         </#list>
-        WHERE
+        where
         <#list table.primaryKeys.columnList as column>
-            <#if column_index gt 0>AND </#if>${column.sqlName}${lib.space(column.sqlName)} = ${"#"}{${column.javaName},jdbcType=${column.sqlType}}
+            <#if column_index gt 0>and </#if>${column.sqlName}${lib.space(column.sqlName)} = ${"#"}{${column.javaName},jdbcType=${column.sqlType}}
         </#list>
     </operation>
 
     <operation name="deleteBy${table.primaryKeys.pkName}" multiplicity="one" remark="delete:${table.sqlName}">
-        DELETE FROM
+        delete from
             ${table.sqlName}
-        WHERE
+        where
         <#list table.primaryKeys.columnList as column>
-            <#if column_index gt 0>AND </#if>${column.sqlName} = ${"#"}{${column.javaName},jdbcType=${column.sqlType}}
+            <#if column_index gt 0>and </#if>${column.sqlName} = ${"#"}{${column.javaName},jdbcType=${column.sqlType}}
         </#list>
     </operation>
 
     <operation name="getBy${table.primaryKeys.pkName}" multiplicity="one" remark="get:${table.sqlName}">
-        SELECT *
-        FROM ${table.sqlName}
-        WHERE
+        select *
+        from ${table.sqlName}
+        where
         <#list table.primaryKeys.columnList as column>
-            <#if column_index gt 0>AND </#if>${column.sqlName} = ${"#"}{${column.javaName},jdbcType=${column.sqlType}}
+            <#if column_index gt 0>and </#if>${column.sqlName} = ${"#"}{${column.javaName},jdbcType=${column.sqlType}}
         </#list>
     </operation>
 </#if>
