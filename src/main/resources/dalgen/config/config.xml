@@ -16,24 +16,24 @@
     <typemap from="java.sql.Timestamp" to="java.util.Date"/>
     <typemap from="byte" to="int"/>
     <typemap from="short" to="int"/>
-    <typemap from="Long" to="com.zentech.westockcore.account.service.Money"/>
+
     <!-- ========================================================== -->
     <!-- datasource config-->
     <!-- ========================================================== -->
 
-    <database name="westockcore" class="org.gjt.mm.mysql.Driver" type="mysql">
-        <property name="url" value="jdbc:mysql://10.0.1.82:3306/westockcore"/>
-        <property name="userid" value="root"/>
-        <property name="password" value="123456"/>
-        <property name="schema" value="westockcore"/>
+    <database name="xtdb2d" class="org.gjt.mm.mysql.Driver" type="mysql">
+        <property name="url" value="jdbc:mysql://localhost:3306/xtdb2d"/>
+        <property name="userid" value="caosh"/>
+        <property name="password" value="caosh"/>
+        <property name="schema" value="xtdb2d"/>
     </database>
 
 
     <!-- ========project.name pom.xml========================= -->
-    <package value="com.zentech.westockcore.account.service.dal"/>
+    <package value="me.caosh.dalgen"/>
 
     <!-- ========================================================== -->
-    <tablePrefix value="ws_"/>
-    <tablePath value="${database.name}_tables/"/>
+    <tablePrefix value=""/>
+    <tablePath value="${database.name}Tables/"/>
 
 </config>

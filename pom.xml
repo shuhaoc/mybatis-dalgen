@@ -6,7 +6,7 @@
 
     <groupId>com.dalgen.mybatis-maven-plugin</groupId>
     <artifactId>mybatis-maven-plugin</artifactId>
-    <version>1.8.3</version>
+    <version>1.9.0-local</version>
     <packaging>maven-plugin</packaging>
 
     <name>mydalgen</name>

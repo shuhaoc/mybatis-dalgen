@@ -52,8 +52,8 @@ public class BaseTest extends TestCase {
 
         try {
             ConfigUtil.readConfig(config);
-            ConfigUtil.setCmd("ws_user_info");
-            ConfigUtil.setCurrentDb("westockcore");
+            ConfigUtil.setCmd("album");
+            ConfigUtil.setCurrentDb("xtdb2d");
             //ConfigUtil.setCmd("dc_per_account_dept_role");
            // ConfigUtil.setCmd("fp_oac_ast_attr_000");
            // ConfigUtil.setCmd("dc_hello");
