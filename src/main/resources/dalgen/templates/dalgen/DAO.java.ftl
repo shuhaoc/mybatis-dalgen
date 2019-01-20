@@ -8,13 +8,14 @@ import org.springframework.stereotype.Repository;
 <#list dao.importLists as import>
 import ${import};
 </#list>
+import java.util.ArrayList;
 
 /**
 * The Table ${dao.tableName!}.
 * ${dao.desc!}
 */
 @Repository
-public class ${dao.className}{
+public class ${dao.className} {
 
     @Autowired
     private ${dao.doMapper.className} ${dao.doMapper.className?uncap_first};
@@ -28,11 +29,13 @@ public class ${dao.className}{
         </#list>
      * @return ${method.returnClass!}
      */
-    public ${method.returnClass!} ${method.name}(<#list  method.params as param><#if param_index gt 0>,</#if>${param.paramType!} <#assign pagingParam = param.param/>${param.param}</#list>){
+    public ${method.returnClass!} ${method.name}(<#list  method.params as param><#if param_index gt 0>, </#if>${param.paramType!} <#assign pagingParam = param.param/>${param.param}</#list>) {
     <#if method.pagingFlag == "true">
         int total = ${dao.doMapper.className?uncap_first}.${method.name}Count(<#list  method.params as param><#if param_index gt 0>, </#if>${param.param}</#list>);
-        if(total>0){
+        if (total > 0) {
             ${pagingParam}.setDatas(${dao.doMapper.className?uncap_first}.${method.name}Result(<#list  method.params as param><#if param_index gt 0>, </#if>${param.param}</#list>));
+        } else {
+            ${pagingParam}.setDatas(new ArrayList<>());
         }
         ${pagingParam}.setTotal(total);
         return ${pagingParam};
@@ -40,6 +43,7 @@ public class ${dao.className}{
         return ${dao.doMapper.className?uncap_first}.${method.name}(<#list  method.params as param><#if param_index gt 0>, </#if>${param.param}</#list>);
     </#if>
     }
+
     </#list>
 }
 </#list>
