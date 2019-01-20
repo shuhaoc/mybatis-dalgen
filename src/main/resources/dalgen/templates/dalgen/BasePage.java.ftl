@@ -122,11 +122,11 @@ public class BasePage<T> {
         return isLastPage;
     }
 
-    public boolean hasPreviousPage() {
+    public boolean isHasPreviousPage() {
         return hasPreviousPage;
     }
 
-    public boolean hasNextPage() {
+    public boolean isHasNextPage() {
         return hasNextPage;
     }
 
@@ -142,7 +142,11 @@ public class BasePage<T> {
         return (this.currPageNo-1)*this.limit;
     }
 
-                public String toString() {
+    public void setStartRow(int startRow) {
+        this.currPageNo = startRow / this.limit + 1;
+    }
+
+    public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append("[").append("total=").append(total).append(",pageNos=").append(pageNos)
                 .append(",currPageNo=").append(currPageNo).append(",limit=").append(limit)

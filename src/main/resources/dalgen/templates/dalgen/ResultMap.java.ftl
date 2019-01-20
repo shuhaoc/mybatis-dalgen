@@ -20,6 +20,7 @@ private static final long serialVersionUID = -1L;
      * ${fields.name} ${fields.desc}.
      */
     private ${fields.javaType} ${fields.name};
+
     </#list>
     <#list resultMap.fieldses as fields>
 

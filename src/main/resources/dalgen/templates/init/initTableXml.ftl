@@ -4,8 +4,6 @@
 <@pp.changeOutputFile name = "/${dalgen.tablesPath}/${table.sqlName}.xml" />
 <!DOCTYPE table SYSTEM "../config/table-config-1.0.dtd">
 <table sqlname="${table.sqlName}" physicalName="${table.physicalName}"<#if table.remark??> remark="${table.remark!}"</#if>>
-    <!--    &lt;&gt;   <> -->
-
     <operation name="insert" paramtype="object" remark="insert:${table.sqlName}">
         <#if dalgen.dbType=="MySQL">
         <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">

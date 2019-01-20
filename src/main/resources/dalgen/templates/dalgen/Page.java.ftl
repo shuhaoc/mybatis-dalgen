@@ -10,20 +10,21 @@ import ${import};
 /**
  * The table ${paging.desc!}
  */
-public class ${paging.className} extends BasePage<${paging.resultType}>{
+public class ${paging.className} extends BasePage<${paging.resultType}> {
 
     <#list paging.fieldses as fields>
     /**
      * ${fields.name} ${fields.desc!}.
      */
     private ${fields.javaType} ${fields.name};
+
     </#list>
     <#list paging.fieldses as fields>
 
     /**
      * Set ${fields.name} ${fields.desc!}.
      */
-    public void set${fields.name?cap_first}(${fields.javaType} ${fields.name}){
+    public void set${fields.name?cap_first}(${fields.javaType} ${fields.name}) {
         this.${fields.name} = ${fields.name};
     }
 
@@ -32,7 +33,7 @@ public class ${paging.className} extends BasePage<${paging.resultType}>{
      *
      * @return the string
      */
-    public ${fields.javaType} get${fields.name?cap_first}(){
+    public ${fields.javaType} get${fields.name?cap_first}() {
         return ${fields.name};
     }
     </#list>
